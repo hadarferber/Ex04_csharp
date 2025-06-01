@@ -35,7 +35,8 @@ namespace Ex04.Menus.Events
                 }
 
                 Console.WriteLine("0. " + (currentMenu == r_RootMenu ? "Exit" : "Back"));
-                Console.Write("Please enter your choice: ");
+                Console.WriteLine("Please enter your choice (1-2 or 0 to exit):");
+                Console.Write(">> ");
 
                 string input = Console.ReadLine();
 

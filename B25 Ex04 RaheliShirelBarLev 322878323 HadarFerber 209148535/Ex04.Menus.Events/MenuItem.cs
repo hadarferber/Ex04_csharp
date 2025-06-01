@@ -22,7 +22,7 @@ namespace Ex04.Menus.Events
             set { m_Title = value; }
         }
 
-        public event Action<MenuItem> WasChosen;
+        public event Action WasChosen;
         
         private List<MenuItem> m_SubItems;
         public List<MenuItem> SubItems
@@ -30,7 +30,7 @@ namespace Ex04.Menus.Events
             get { return m_SubItems; }
         }
 
-        public MenuItem(string title, Action<MenuItem> action = null) //ctor
+        public MenuItem(string title, Action action = null) //ctor
         {
             m_Title = title;
             WasChosen = action;
@@ -48,7 +48,7 @@ namespace Ex04.Menus.Events
         {
             if (WasChosen != null)
             {
-                WasChosen.Invoke(this);
+                WasChosen.Invoke();
             }
         }
 

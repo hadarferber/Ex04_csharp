@@ -10,7 +10,7 @@ namespace Ex04.Menus.Test
     public class Program
     {
 
-        static void Main()
+        public static void Main()
         {
             MenuItem root = MenuBuilder.BuildMainMenu();
             MainMenu manager = new MainMenu(root);
