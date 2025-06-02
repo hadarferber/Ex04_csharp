@@ -9,70 +9,34 @@ namespace Ex04.Menus.Test
 {
     public class MenuBuilder
     {
-        public static MenuItem BuildMainMenu()
+        private readonly UsableMethods r_UsableMethods;
+
+        public MenuBuilder()
         {
-            MenuItem root = new MenuItem("Delegates Main Menu");
+            r_UsableMethods = new UsableMethods();
+        }
+
+        public MenuItem BuildMainMenu()
+        {
+            MenuItem rootMenuItem = new MenuItem("Delegates Main Menu");
 
             MenuItem lettersMenu = new MenuItem("Letters and Version");
             MenuItem dateTimeMenu = new MenuItem("Show Current Date/Time");
+            MenuItem showVersionMenuItem = new MenuItem("Show Version", r_UsableMethods.ShowVersion);
+            MenuItem countLettersMenuItem = new MenuItem("Count Lowercase Letters", r_UsableMethods.CountLowercaseLetters);
+            MenuItem showDateMenuItem = new MenuItem("Show Current Date", r_UsableMethods.ShowDate);
+            MenuItem showTimeMenuItem = new MenuItem("Show Current Time", r_UsableMethods.ShowTime);
 
-            MenuItem showVersion = new MenuItem("Show Version", ShowVersion);
-            MenuItem countLetters = new MenuItem("Count Lowercase Letters", CountLowercaseLetters);
-            MenuItem showDate = new MenuItem("Show Current Date", ShowDate);
-            MenuItem showTime = new MenuItem("Show Current Time", ShowTime);
+            lettersMenu.AddSubItem(showVersionMenuItem);
+            lettersMenu.AddSubItem(countLettersMenuItem);
 
-            lettersMenu.AddSubItem(showVersion);
-            lettersMenu.AddSubItem(countLetters);
+            dateTimeMenu.AddSubItem(showDateMenuItem);
+            dateTimeMenu.AddSubItem(showTimeMenuItem);
 
-            dateTimeMenu.AddSubItem(showDate);
-            dateTimeMenu.AddSubItem(showTime);
+            rootMenuItem.AddSubItem(lettersMenu);
+            rootMenuItem.AddSubItem(dateTimeMenu);
 
-            root.AddSubItem(lettersMenu);
-            root.AddSubItem(dateTimeMenu);
-
-            return root;
-        }
-
-        private static void CountLowercaseLetters()
-        {
-            Console.Write("Enter a sentence: ");
-            string input = Console.ReadLine();
-            int count = 0;
-            foreach (char c in input)
-            {
-                if (char.IsLower(c))
-                {
-                    count++;
-                }
-            }
-            Console.WriteLine($"> There are {count} lowercase letters.");
-            pressAKeyToContinue();
-
-        }
-
-        private static void ShowVersion()
-        {
-            Console.WriteLine("App Version: 25.2.4.4480");
-            pressAKeyToContinue();
-        }
-
-        private static void ShowDate()
-        {
-            Console.WriteLine($"> Current Date: {DateTime.Now}");
-            pressAKeyToContinue();
-        }
-
-        private static void ShowTime()
-        {
-            Console.WriteLine($"> Current Time is {DateTime.Now:HH:mm}");
-            pressAKeyToContinue();
-        }
-
-        private static void pressAKeyToContinue()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadLine();
+            return rootMenuItem;
         }
 
 

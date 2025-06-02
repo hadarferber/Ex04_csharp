@@ -10,10 +10,24 @@ namespace Ex04.Menus.Events
     {
         private string m_Title;
         private bool m_IsLeaf;
+        public event Action WasChosen;
+        private List<MenuItem> m_SubItems;
+        
+        public List<MenuItem> SubItems
+        {
+            get { return m_SubItems; }
+        }
+
+        public MenuItem(string i_Title, Action i_Function = null) //ctor
+        {
+            m_Title = i_Title;
+            WasChosen = i_Function;
+            m_SubItems = new List<MenuItem>();
+        }
 
         public bool IsLeaf
         {
-            get { return WasChosen != null; } 
+            get { return WasChosen != null; }
         }
 
         public string Title
@@ -21,22 +35,6 @@ namespace Ex04.Menus.Events
             get { return m_Title; }
             set { m_Title = value; }
         }
-
-        public event Action WasChosen;
-        
-        private List<MenuItem> m_SubItems;
-        public List<MenuItem> SubItems
-        {
-            get { return m_SubItems; }
-        }
-
-        public MenuItem(string title, Action action = null) //ctor
-        {
-            m_Title = title;
-            WasChosen = action;
-            m_SubItems = new List<MenuItem>();
-        }
-
 
         public void AddSubItem(MenuItem item)
         {

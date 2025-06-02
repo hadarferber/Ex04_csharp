@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="MenuBuilder.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="UsableMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ex04.Menus.Events\Ex04.Menus.Events.csproj">

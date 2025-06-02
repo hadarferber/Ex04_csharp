@@ -12,9 +12,10 @@ namespace Ex04.Menus.Test
 
         public static void Main()
         {
-            MenuItem root = MenuBuilder.BuildMainMenu();
-            MainMenu manager = new MainMenu(root);
-            manager.Show();
+            MenuBuilder builder = new MenuBuilder();
+            MenuItem rootMenuItem = builder.BuildMainMenu();
+            MainMenu menuManager = new MainMenu(rootMenuItem);
+            menuManager.Show();
         }
 
 
