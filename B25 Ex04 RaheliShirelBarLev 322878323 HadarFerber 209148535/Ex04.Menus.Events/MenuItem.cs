@@ -23,11 +23,12 @@ namespace Ex04.Menus.Events
             m_Title = i_Title;
             WasChosen = i_Function;
             m_SubItems = new List<MenuItem>();
+            m_IsLeaf = (WasChosen != null); 
         }
 
         public bool IsLeaf
         {
-            get { return WasChosen != null; }
+            get { return m_IsLeaf; }
         }
 
         public string Title

@@ -11,25 +11,32 @@ namespace Ex04.Menus.Test
 {
     public class Program
     {
+        private Events.MainMenu m_EventsMainMenu;
+        private Interfaces.MainMenu m_InterfacesMainMenu;
 
         public static void Main()
         {
-            /*MenuBuilder builder = new MenuBuilder();
-            MenuItem rootMenuItem = builder.BuildMainMenu();
-            MainMenu menuManager = new MainMenu(rootMenuItem);
-            menuManager.Show();*/
+            Program program = new Program();
 
-            // Interfaces menu (static call)
-            IMenuBuilder interfacesBuilder = new IMenuBuilder();
-            Ex04.Menus.Interfaces.MenuItem interfaceRoot = interfacesBuilder.BuildMainMenu();
-            Ex04.Menus.Interfaces.MainMenu interfaceMenu = new Ex04.Menus.Interfaces.MainMenu(interfaceRoot);
-            interfaceMenu.Show();
+            program.setUpProgram(out Interfaces.MenuItem interfaceRoot, out Events.MenuItem eventsRoot);
+            program.m_InterfacesMainMenu = new Interfaces.MainMenu(interfaceRoot);  // Interfaces menu
+            program.m_InterfacesMainMenu.Show();
+            program.m_EventsMainMenu = new Events.MainMenu(eventsRoot); // Events menu
+            program.m_EventsMainMenu.Show();
 
-            // Events menu (instance call)
+        }
+
+        private void setUpProgram(out Interfaces.MenuItem o_InterfaceRoot, out Events.MenuItem o_EventsRoot)
+        {
+            UsableMethods usableMethods = new UsableMethods();
+            IMenuBuilder interfacesBuilder = new IMenuBuilder(usableMethods);
+            Interfaces.MenuItem interfaceRoot = interfacesBuilder.BuildMainMenu();
+
+            o_InterfaceRoot = interfaceRoot;
             MenuBuilder eventsBuilder = new MenuBuilder(); // non-static class
-            Ex04.Menus.Events.MenuItem eventsRoot = eventsBuilder.BuildMainMenu();
-            Ex04.Menus.Events.MainMenu eventsMenu = new Ex04.Menus.Events.MainMenu(eventsRoot);
-            eventsMenu.Show();
+            Events.MenuItem eventsRoot = eventsBuilder.BuildMainMenu();
+
+            o_EventsRoot = eventsRoot;
         }
 
     }

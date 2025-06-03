@@ -9,10 +9,16 @@ namespace Ex04.Menus.Test
 {
     public class ShowVersion : IMenuAction
     {
-        public void Execute()
+        private readonly UsableMethods r_UsableMethods;
+
+        public ShowVersion(UsableMethods i_UsableMethods)
         {
-            UsableMethods utils = new UsableMethods();
-            utils.ShowVersion();
+            r_UsableMethods = i_UsableMethods;    
+        }
+
+        public void ExecuteAction()
+        {
+            r_UsableMethods.ShowVersion();
         }
     }
 }

@@ -20,34 +20,38 @@ namespace Ex04.Menus.Interfaces
             showMenu(r_Root);
         }
 
-        private void showMenu(MenuItem current)
+        private void showMenu(MenuItem currentMenu)
         {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine($"** {current.Title} **");
-                Console.WriteLine(new string('-', current.Title.Length + 6));
+                Console.WriteLine($"** {currentMenu.Title} **");
+                Console.WriteLine(new string('-', currentMenu.Title.Length + 6));
 
-                for (int i = 0; i < current.SubItems.Count; i++)
+                for (int i = 0; i < currentMenu.SubItems.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {current.SubItems[i].Title}");
+                    Console.WriteLine($"{i + 1}. {currentMenu.SubItems[i].Title}");
                 }
 
-                Console.WriteLine("0. " + (current == r_Root ? "Exit" : "Back"));
-                Console.Write("Please enter your choice: ");
+                Console.WriteLine("0. " + (currentMenu == r_Root ? "Exit" : "Back"));
+                Console.WriteLine("Please enter your choice (1-2 or 0 to exit):");
+                Console.Write(">> ");
                 string input = Console.ReadLine();
 
-                if (!int.TryParse(input, out int choice) || choice < 0 || choice > current.SubItems.Count)
+                if (!int.TryParse(input, out int choice) || choice < 0 || choice > currentMenu.SubItems.Count)
                 {
-                    Console.WriteLine("Invalid choice. Press Enter to try again...");
+                    Console.WriteLine("Invalid choice. Press any key to try again.");
                     Console.ReadLine();
+                    
                     continue;
                 }
 
                 if (choice == 0)
+                {
                     break;
+                }
 
-                MenuItem selected = current.SubItems[choice - 1];
+                MenuItem selected = currentMenu.SubItems[choice - 1];
 
                 if (selected.IsLeaf)
                 {

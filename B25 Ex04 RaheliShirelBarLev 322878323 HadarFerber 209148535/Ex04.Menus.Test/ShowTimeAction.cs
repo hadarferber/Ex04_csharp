@@ -9,9 +9,16 @@ namespace Ex04.Menus.Test
 {
     public class ShowTimeAction : IMenuAction
     {
-        public void Execute() {
-            UsableMethods utils = new UsableMethods();
-            utils.ShowTime(); ;
+        private readonly UsableMethods r_UsableMethods;
+
+        public ShowTimeAction(UsableMethods i_UsableMethods)
+        {
+            r_UsableMethods = i_UsableMethods;
+        }
+
+        public void ExecuteAction() 
+        {
+            r_UsableMethods.ShowTime(); ;
         }
     }
 }

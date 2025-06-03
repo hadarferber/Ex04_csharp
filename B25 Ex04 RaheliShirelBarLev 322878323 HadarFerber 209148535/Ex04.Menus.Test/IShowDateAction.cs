@@ -9,10 +9,16 @@ namespace Ex04.Menus.Test
 {
     public class IShowDateAction : IMenuAction
     {
-        public void Execute()
+        private readonly UsableMethods r_UsableMethods;
+
+        public IShowDateAction(UsableMethods i_UsableMethods)
         {
-            UsableMethods utils = new UsableMethods();
-            utils.ShowDate();
+            r_UsableMethods = i_UsableMethods;
+        }
+
+        public void ExecuteAction()
+        {
+            r_UsableMethods.ShowDate();
         }
     }
 }

@@ -19,7 +19,6 @@ namespace Ex04.Menus.Test
         public MenuItem BuildMainMenu()
         {
             MenuItem rootMenuItem = new MenuItem("Delegates Main Menu");
-
             MenuItem lettersMenu = new MenuItem("Letters and Version");
             MenuItem dateTimeMenu = new MenuItem("Show Current Date/Time");
             MenuItem showVersionMenuItem = new MenuItem("Show Version", r_UsableMethods.ShowVersion);
@@ -29,17 +28,12 @@ namespace Ex04.Menus.Test
 
             lettersMenu.AddSubItem(showVersionMenuItem);
             lettersMenu.AddSubItem(countLettersMenuItem);
-
             dateTimeMenu.AddSubItem(showDateMenuItem);
             dateTimeMenu.AddSubItem(showTimeMenuItem);
-
             rootMenuItem.AddSubItem(lettersMenu);
             rootMenuItem.AddSubItem(dateTimeMenu);
 
             return rootMenuItem;
         }
-
-
     }
-
 }

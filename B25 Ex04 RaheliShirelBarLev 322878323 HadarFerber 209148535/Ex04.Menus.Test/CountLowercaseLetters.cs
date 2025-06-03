@@ -9,10 +9,16 @@ namespace Ex04.Menus.Test
 {
     public class CountLowercaseLetters : IMenuAction
     {
-        public void Execute()
+        private readonly UsableMethods r_UsableMethods;
+
+        public CountLowercaseLetters(UsableMethods i_UsableMethods)
         {
-            UsableMethods utils = new UsableMethods();
-            utils.CountLowercaseLetters();
+            r_UsableMethods = i_UsableMethods;
+        }
+
+        public void ExecuteAction()
+        {
+            r_UsableMethods.CountLowercaseLetters();
         }
     }
 }

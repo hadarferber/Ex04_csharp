@@ -34,10 +34,9 @@ namespace Ex04.Menus.Interfaces
 
         public void Activate()
         {
-
             if (Action != null)
             {
-                Action.Execute();
+                Action.ExecuteAction();
             }
         }
     }

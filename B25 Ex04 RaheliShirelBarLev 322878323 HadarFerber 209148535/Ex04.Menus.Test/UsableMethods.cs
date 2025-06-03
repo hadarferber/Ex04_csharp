@@ -21,6 +21,7 @@ namespace Ex04.Menus.Test
                     count++;
                 }
             }
+
             Console.WriteLine($"> There are {count} lowercase letters.");
             pressAKeyToContinue();
         }
