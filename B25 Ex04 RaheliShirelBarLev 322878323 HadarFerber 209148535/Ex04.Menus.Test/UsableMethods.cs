@@ -13,16 +13,16 @@ namespace Ex04.Menus.Test
             Console.Clear();
             Console.Write("Enter a sentence: ");
             string input = Console.ReadLine();
-            int count = 0;
-            foreach (char c in input)
+            int lowerCaseCount = 0;
+            foreach (char letter in input)
             {
-                if (char.IsLower(c))
+                if (char.IsLower(letter))
                 {
-                    count++;
+                    lowerCaseCount++;
                 }
             }
 
-            Console.WriteLine($"> There are {count} lowercase letters.");
+            Console.WriteLine($"> There are {lowerCaseCount} lowercase letters.");
             pressAKeyToContinue();
         }
 

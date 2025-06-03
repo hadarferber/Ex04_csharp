@@ -9,34 +9,47 @@ namespace Ex04.Menus.Interfaces
     public class MenuItem
     {
 
-        public string Title { get; }
-        public IMenuAction Action { get; }
-        public List<MenuItem> SubItems { get; }
+        private readonly string r_Title;
+        private IMenuAction m_MethodToDo;
+        private List<MenuItem> m_SubMenuItems;
 
-        public MenuItem(string title, IMenuAction action = null)
+        public string Title
         {
-            Title = title;
-            Action = action;
-            SubItems = new List<MenuItem>();
+            get { return r_Title; }
         }
 
-
-        public bool IsLeaf
+        public IMenuAction MethodToDo
         {
-            get { return Action != null; }
+            get { return m_MethodToDo; }
         }
 
-
-        public void AddSubItem(MenuItem item)
+        public List<MenuItem> SubMenuItems
         {
-            SubItems.Add(item);
+            get { return m_SubMenuItems; }
+        }
+
+        public MenuItem(string i_Title, IMenuAction i_Action = null)
+        {
+            r_Title = i_Title;
+            m_MethodToDo = i_Action;
+            m_SubMenuItems = new List<MenuItem>();
+        }
+
+        public bool IsLeaf()
+        {
+           return m_MethodToDo != null;
+        }
+
+        public void AddSubMenuItem(MenuItem item)
+        {
+            SubMenuItems.Add(item);
         }
 
         public void Activate()
         {
-            if (Action != null)
+            if (m_MethodToDo != null)
             {
-                Action.ExecuteAction();
+                m_MethodToDo.ExecuteAction();
             }
         }
     }

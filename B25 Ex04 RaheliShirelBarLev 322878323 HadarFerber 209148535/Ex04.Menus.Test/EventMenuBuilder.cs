@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Test
 {
-    public class MenuBuilder
+    public class EventMenuBuilder
     {
         private readonly UsableMethods r_UsableMethods;
 
-        public MenuBuilder()
+        public EventMenuBuilder()
         {
             r_UsableMethods = new UsableMethods();
         }
@@ -26,12 +26,12 @@ namespace Ex04.Menus.Test
             MenuItem showDateMenuItem = new MenuItem("Show Current Date", r_UsableMethods.ShowDate);
             MenuItem showTimeMenuItem = new MenuItem("Show Current Time", r_UsableMethods.ShowTime);
 
-            lettersMenu.AddSubItem(showVersionMenuItem);
-            lettersMenu.AddSubItem(countLettersMenuItem);
-            dateTimeMenu.AddSubItem(showDateMenuItem);
-            dateTimeMenu.AddSubItem(showTimeMenuItem);
-            rootMenuItem.AddSubItem(lettersMenu);
-            rootMenuItem.AddSubItem(dateTimeMenu);
+            lettersMenu.AddSubMenuItem(showVersionMenuItem);
+            lettersMenu.AddSubMenuItem(countLettersMenuItem);
+            dateTimeMenu.AddSubMenuItem(showDateMenuItem);
+            dateTimeMenu.AddSubMenuItem(showTimeMenuItem);
+            rootMenuItem.AddSubMenuItem(lettersMenu);
+            rootMenuItem.AddSubMenuItem(dateTimeMenu);
 
             return rootMenuItem;
         }

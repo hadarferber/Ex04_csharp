@@ -8,53 +8,48 @@ namespace Ex04.Menus.Events
 {
     public class MenuItem
     {
-        private string m_Title;
-        private bool m_IsLeaf;
-        public event Action WasChosen;
-        private List<MenuItem> m_SubItems;
+        private readonly string r_Title;
+        public event Action MenuItemWasChosen;
+        private List<MenuItem> m_SubMenuItems;
         
-        public List<MenuItem> SubItems
+        public List<MenuItem> SubMenuItems
         {
-            get { return m_SubItems; }
+            get { return m_SubMenuItems; }
         }
 
         public MenuItem(string i_Title, Action i_Function = null) //ctor
         {
-            m_Title = i_Title;
-            WasChosen = i_Function;
-            m_SubItems = new List<MenuItem>();
-            m_IsLeaf = (WasChosen != null); 
+            r_Title = i_Title;
+            MenuItemWasChosen = i_Function;
+            m_SubMenuItems = new List<MenuItem>();
         }
-
-        public bool IsLeaf
+      
+        public bool IsLeaf()
         {
-            get { return m_IsLeaf; }
+            return MenuItemWasChosen != null;
         }
 
         public string Title
         {
-            get { return m_Title; }
-            set { m_Title = value; }
+            get { return r_Title; }
         }
 
-        public void AddSubItem(MenuItem item)
+        public void AddSubMenuItem(MenuItem item)
         {
-            m_SubItems.Add(item);
+            m_SubMenuItems.Add(item);
         }
 
-
-        private void OnWasChosen()
+        private void OnMenuItemWasChosen()
         {
-            if (WasChosen != null)
+            if (MenuItemWasChosen != null)
             {
-                WasChosen.Invoke();
+                MenuItemWasChosen.Invoke();
             }
         }
 
         public void AMenuItemWasChosen()
         {
-            OnWasChosen();
+            OnMenuItemWasChosen();
         }
-
     }
 }

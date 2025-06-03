@@ -11,9 +11,9 @@ namespace Ex04.Menus.Events
     {
         private readonly MenuItem r_RootMenuItem;
 
-        public MainMenu(MenuItem i_Root)     //ctor
+        public MainMenu(MenuItem i_MenuItem)//ctor
         {
-            r_RootMenuItem = i_Root;
+            r_RootMenuItem = i_MenuItem;
         }
 
         public void Show()
@@ -21,40 +21,38 @@ namespace Ex04.Menus.Events
             showMenu(r_RootMenuItem);
         }
 
-        private void showMenu(MenuItem currentMenu)
+        private void showMenu(MenuItem currentMenuItem)
         {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine($"** {currentMenu.Title} **");
-                Console.WriteLine(new string('-', currentMenu.Title.Length + 6));
-                for (int i = 0; i < currentMenu.SubItems.Count; i++)
+                Console.WriteLine($"** {currentMenuItem.Title} **");
+                Console.WriteLine(new string('-', currentMenuItem.Title.Length + 6));
+                for (int i = 0; i < currentMenuItem.SubMenuItems.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {currentMenu.SubItems[i].Title}");
+                    Console.WriteLine($"{i + 1}. {currentMenuItem.SubMenuItems[i].Title}");
                 }
 
-                Console.WriteLine("0. " + (currentMenu == r_RootMenuItem ? "Exit" : "Back"));
+                Console.WriteLine("0. " + (currentMenuItem == r_RootMenuItem ? "Exit" : "Back"));
                 Console.WriteLine("Please enter your choice (1-2 or 0 to exit):");
                 Console.Write(">> ");
-
                 string input = Console.ReadLine();
 
-                if (!int.TryParse(input, out int choice) || choice < 0 || choice > currentMenu.SubItems.Count)
+                if (!int.TryParse(input, out int userChoice) || userChoice < 0 || userChoice > currentMenuItem.SubMenuItems.Count)
                 {
                     Console.WriteLine("Invalid choice. Press any key to try again.");
                     Console.ReadLine();
-
                     continue;
                 }
 
-                if (choice == 0)
+                if (userChoice == 0)
                 {
                     break;
                 }
 
-                MenuItem selectedMenuItem = currentMenu.SubItems[choice - 1];
+                MenuItem selectedMenuItem = currentMenuItem.SubMenuItems[userChoice - 1];
 
-                if (selectedMenuItem.IsLeaf)
+                if (selectedMenuItem.IsLeaf())
                 {
                     selectedMenuItem.AMenuItemWasChosen();
                 }
@@ -65,9 +63,4 @@ namespace Ex04.Menus.Events
             }
         }
     }
-
-
-
-
-   
 }

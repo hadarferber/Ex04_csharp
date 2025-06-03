@@ -29,11 +29,11 @@ namespace Ex04.Menus.Test
         private void setUpProgram(out Interfaces.MenuItem o_InterfaceRoot, out Events.MenuItem o_EventsRoot)
         {
             UsableMethods usableMethods = new UsableMethods();
-            IMenuBuilder interfacesBuilder = new IMenuBuilder(usableMethods);
+            InterfaceMenuBuilder interfacesBuilder = new InterfaceMenuBuilder(usableMethods);
             Interfaces.MenuItem interfaceRoot = interfacesBuilder.BuildMainMenu();
 
             o_InterfaceRoot = interfaceRoot;
-            MenuBuilder eventsBuilder = new MenuBuilder(); // non-static class
+            EventMenuBuilder eventsBuilder = new EventMenuBuilder(); // non-static class
             Events.MenuItem eventsRoot = eventsBuilder.BuildMainMenu();
 
             o_EventsRoot = eventsRoot;

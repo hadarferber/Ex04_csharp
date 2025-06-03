@@ -37,8 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountLowercaseLetters.cs" />
-    <Compile Include="IMenuBuilder.cs" />
-    <Compile Include="MenuBuilder.cs" />
+    <Compile Include="InterfaceMenuBuilder.cs" />
+    <Compile Include="EventMenuBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ShowVersion.cs" />
     <Compile Include="IShowDateAction.cs" />
