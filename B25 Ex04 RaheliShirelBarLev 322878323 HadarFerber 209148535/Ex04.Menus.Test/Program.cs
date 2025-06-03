@@ -38,6 +38,5 @@ namespace Ex04.Menus.Test
 
             o_EventsRoot = eventsRoot;
         }
-
     }
 }

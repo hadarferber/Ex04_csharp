@@ -8,7 +8,6 @@ namespace Ex04.Menus.Interfaces
 {
     public class MenuItem
     {
-
         private readonly string r_Title;
         private IMenuAction m_MethodToDo;
         private List<MenuItem> m_SubMenuItems;
@@ -37,7 +36,7 @@ namespace Ex04.Menus.Interfaces
 
         public bool IsLeaf()
         {
-           return m_MethodToDo != null;
+           return (m_MethodToDo != null);
         }
 
         public void AddSubMenuItem(MenuItem item)
@@ -45,7 +44,7 @@ namespace Ex04.Menus.Interfaces
             SubMenuItems.Add(item);
         }
 
-        public void Activate()
+        public void ActivateMethodToDo()
         {
             if (m_MethodToDo != null)
             {

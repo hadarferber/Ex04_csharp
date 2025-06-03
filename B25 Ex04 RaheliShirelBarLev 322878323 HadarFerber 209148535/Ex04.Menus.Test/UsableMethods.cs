@@ -14,6 +14,7 @@ namespace Ex04.Menus.Test
             Console.Write("Enter a sentence: ");
             string input = Console.ReadLine();
             int lowerCaseCount = 0;
+
             foreach (char letter in input)
             {
                 if (char.IsLower(letter))
@@ -53,6 +54,5 @@ namespace Ex04.Menus.Test
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
         }
-
     }
 }

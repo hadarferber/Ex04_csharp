@@ -41,8 +41,8 @@
     <Compile Include="EventMenuBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ShowVersion.cs" />
-    <Compile Include="IShowDateAction.cs" />
-    <Compile Include="ShowTimeAction.cs" />
+    <Compile Include="ShowDate.cs" />
+    <Compile Include="ShowTime.cs" />
     <Compile Include="UsableMethods.cs" />
   </ItemGroup>
   <ItemGroup>

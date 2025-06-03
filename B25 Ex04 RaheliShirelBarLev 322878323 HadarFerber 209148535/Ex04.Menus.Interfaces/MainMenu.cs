@@ -20,29 +20,28 @@ namespace Ex04.Menus.Interfaces
             showMenu(r_RootMenuItem);
         }
 
-        private void showMenu(MenuItem currentMenuItem)
+        private void showMenu(MenuItem i_CurrentMenuItem)
         {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine($"** {currentMenuItem.Title} **");
-                Console.WriteLine(new string('-', currentMenuItem.Title.Length + 6));
+                Console.WriteLine($"** {i_CurrentMenuItem.Title} **");
+                Console.WriteLine(new string('-', i_CurrentMenuItem.Title.Length + 6));
 
-                for (int i = 0; i < currentMenuItem.SubMenuItems.Count; i++)
+                for (int i = 0; i < i_CurrentMenuItem.SubMenuItems.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {currentMenuItem.SubMenuItems[i].Title}");
+                    Console.WriteLine($"{i + 1}. {i_CurrentMenuItem.SubMenuItems[i].Title}");
                 }
 
-                Console.WriteLine("0. " + (currentMenuItem == r_RootMenuItem ? "Exit" : "Back"));
+                Console.WriteLine("0. " + (i_CurrentMenuItem == r_RootMenuItem ? "Exit" : "Back"));
                 Console.WriteLine("Please enter your choice (1-2 or 0 to exit):");
                 Console.Write(">> ");
                 string input = Console.ReadLine();
 
-                if (!int.TryParse(input, out int userChoice) || userChoice < 0 || userChoice > currentMenuItem.SubMenuItems.Count)
+                if (!int.TryParse(input, out int userChoice) || userChoice < 0 || userChoice > i_CurrentMenuItem.SubMenuItems.Count)
                 {
                     Console.WriteLine("Invalid choice. Press any key to try again.");
                     Console.ReadLine();
-                    
                     continue;
                 }
 
@@ -51,16 +50,15 @@ namespace Ex04.Menus.Interfaces
                     break;
                 }
 
-                MenuItem selected = currentMenuItem.SubMenuItems[userChoice - 1];
+                MenuItem selectedMenuItem = i_CurrentMenuItem.SubMenuItems[userChoice - 1];
 
-                if (selected.IsLeaf())
+                if (selectedMenuItem.IsLeaf())
                 {
-                    selected.Activate();
-                  
+                    selectedMenuItem.ActivateMethodToDo();
                 }
                 else
                 {
-                    showMenu(selected);
+                    showMenu(selectedMenuItem);
                 }
             }
         }

@@ -26,7 +26,7 @@ namespace Ex04.Menus.Events
       
         public bool IsLeaf()
         {
-            return MenuItemWasChosen != null;
+            return (MenuItemWasChosen != null);
         }
 
         public string Title

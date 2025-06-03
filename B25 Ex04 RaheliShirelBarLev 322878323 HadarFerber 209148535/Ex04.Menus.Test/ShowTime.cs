@@ -7,18 +7,18 @@ using Ex04.Menus.Interfaces;
 
 namespace Ex04.Menus.Test
 {
-    public class IShowDateAction : IMenuAction
+    public class ShowTime : IMenuAction
     {
         private readonly UsableMethods r_UsableMethods;
 
-        public IShowDateAction(UsableMethods i_UsableMethods)
+        public ShowTime(UsableMethods i_UsableMethods)
         {
             r_UsableMethods = i_UsableMethods;
         }
 
-        public void ExecuteAction()
+        public void ExecuteAction() 
         {
-            r_UsableMethods.ShowDate();
+            r_UsableMethods.ShowTime(); ;
         }
     }
 }
